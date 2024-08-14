@@ -7,6 +7,7 @@ class SecureNoteApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Secure Note App")
+        self.set_icon("Secure Notes/notepad.png")
 
         self.key = self.load_key()
         self.correct_password = "password"  
@@ -29,6 +30,14 @@ class SecureNoteApp:
         file_menu.add_command(label="Exit", command=root.quit)
         menu_bar.add_cascade(label="File", menu=file_menu)
         self.root.config(menu=menu_bar)
+
+    def set_icon(self, icon_path):
+        """Set the window icon."""
+        try:
+            icon = tk.PhotoImage(file=icon_path)
+            self.root.iconphoto(False, icon)
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to load icon: {e}")
 
     def load_key(self):
         key_file = "key.key"

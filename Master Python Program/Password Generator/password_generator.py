@@ -65,6 +65,10 @@ def resize_image(path, size):
 style = Style(theme="darkly")
 root = style.master
 root.title("Password Generator")
+try:
+    root.iconphoto(False, tk.PhotoImage(file="Password Generator/password_generator.png"))
+except Exception as e:
+    messagebox.showerror("Error", f"Failed to load icon: {e}")
 
 length_var = tk.IntVar()
 uppercase_var = tk.BooleanVar()
@@ -87,7 +91,6 @@ root.rowconfigure(0, weight=1)
 
 icon_size = (20, 20)
 icon_generate = resize_image("Password Generator/generate.png", icon_size)  
-
 
 ttk.Label(mainframe, text="Length:", compound="left", style="secondary.TLabel").grid(column=0, row=0, sticky=tk.W)
 length_entry = ttk.Entry(mainframe, textvariable=length_var, style="info.TEntry")

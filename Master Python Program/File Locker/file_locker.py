@@ -61,6 +61,10 @@ def on_decrypt_file():
 def main():
     root = tk.Tk()
     root.title("File Locker")
+    try:
+        root.iconphoto(False, tk.PhotoImage(file="File Locker/lock.png"))
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to load icon: {e}")
 
     frame = tk.Frame(root, padx=10, pady=10)
     frame.pack(padx=10, pady=10)

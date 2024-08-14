@@ -95,6 +95,10 @@ def main():
     root = tk.Tk()
     root.title("Password Manager")
     root.geometry("300x200")
+    try:
+        root.iconphoto(False, tk.PhotoImage(file="Password Manager/password_manager.png"))
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to load icon: {e}")
 
     style = ttk.Style()
     style.configure("TButton", font=("Arial", 12))
